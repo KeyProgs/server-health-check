@@ -29,4 +29,9 @@ while read -r line; do
   fi
 done <<< "$(df -hi | grep -vE '^Filesystem|tmpfs|udev')"
 
+
+echo -e "\n🚀 Disk I/O (iostat -dx):"
+iostat -dx 1 1 | tail -n +7
+
+
 print_success "Disk check completed."
