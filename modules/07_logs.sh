@@ -29,5 +29,11 @@ grep "sudo" /var/log/auth.log 2>/dev/null | tail -n 5 || echo "No recent sudo us
 echo -e "\n💣 Kernel Panic / Oops messages (last 100 lines of dmesg):"
 dmesg | grep -iE "panic|fatal|oops" | tail -n 10 || echo "No critical kernel messages found."
 
+
+# Use journalctl -xe  (systemd-based systems):
+echo -e "\n🧾 Last 10 Critical Systemd Log Lines (journalctl -xe):"
+journalctl -xe | tail -n 10
+
+
 # Crontab last runs/errors (optional advanced hook for future)
 # echo -e "\n⏱️ Crontab Summary: (coming soon)"
