@@ -30,8 +30,14 @@ while read -r line; do
 done <<< "$(df -hi | grep -vE '^Filesystem|tmpfs|udev')"
 
 
-echo -e "\n🚀 Disk I/O (iostat -dx):"
-iostat -dx 1 1 | tail -n +7
+# Disk I/O via iostat
+echo -e "\n🚀 Disk I/O Stats (iostat -dx):"
+if command -v iostat &>/dev/null; then
+  iostat -dx 1 1 | tail -n +7
+else
+  print_warning "'iostat' not installed – install via 'sudo apt install sysstat'."
+fi
+
 
 
 print_success "Disk check completed."
