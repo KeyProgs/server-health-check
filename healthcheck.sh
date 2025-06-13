@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Load config
+source "$BASE_DIR/config/settings.conf"   #load The settings
+
+
 BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 LOG_FILE="$BASE_DIR/reports/health_$(date +%Y%m%d_%H%M).log"
 mkdir -p "$BASE_DIR/reports"
